@@ -32,13 +32,12 @@ public class HttpRequestUtil {
 		StringBuilder sb = new StringBuilder();
 		
 		try {
-			HttpURLConnection conn = null;
 			String paramString = paramMapToString(paramMap);
 			if(paramString != null) {
 				requestUrl = requestUrl + "?" + paramString;
 			}
 			URL url = new URL(requestUrl);
-			conn = (HttpURLConnection)url.openConnection();
+			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 			conn.setConnectTimeout(connectTimeout);
 			conn.setReadTimeout(readTimeout);
 			conn.connect();
@@ -72,27 +71,32 @@ public class HttpRequestUtil {
 		StringBuilder sb = new StringBuilder();
 		
 		try {
-			HttpURLConnection conn = null;
 			URL url = new URL(requestUrl);
-			conn = (HttpURLConnection)url.openConnection();
+			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 			conn.setConnectTimeout(connectTimeout);
 			conn.setReadTimeout(readTimeout);
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
-			try(
-					PrintWriter out = new PrintWriter(conn.getOutputStream())) {
-				out.print(paramMapToString(paramMap));
-				out.flush();
+			
+			String paramString = paramMapToString(paramMap);
+			if(paramString != null) {
+				try(
+						PrintWriter out = new PrintWriter(conn.getOutputStream())) {
+					out.print(paramString);
+					out.flush();
+				}
 			}
 			
+			if(conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
 				String line = null;
 				try(BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), responseCharsetName))) {
 					while ((line = br.readLine()) != null) {
 						sb.append(line+"\n");
 					}
 				}
-
+				
 				return sb.toString();
+			}
 		} catch (Exception e) {
 			logger.error("暂时无法访问 "+requestUrl+" , 网络错误！Exception: " + e);
 		}
@@ -104,6 +108,7 @@ public class HttpRequestUtil {
 		if(paramMap==null || paramMap.size()==0) {
 			return null;
 		}
+		
 		StringBuilder sb = new StringBuilder();
 		for(Entry<String, String> entry : paramMap.entrySet()) {
 			String key = entry.getKey();
