@@ -57,12 +57,19 @@
 	<h4>16.5.6 死锁</h4>
 		<p>当两个线程互相等待对方释放同步监视器时就会引发死锁，Java虚拟机不会采取措施来处理死锁。（现代操作系统也一样）</p>
 	<h4>16.6 线程通信</h4>
-	三个方法：wait()、notify()、notifyAll()
-	<p>wait()导致当前线程等待，直到其他线程调用该同步监视器的notify()或者notifyAll()方法来唤醒该线程</p>
-	<p>notify()或者notifyAll()方法唤醒在此同步监视器上等待的线程</p>
-	<p>如果没有使用synchronized关键字来进行线程同步，
-	而是直接使用Lock对象来保证同步那么线程中就不存在隐式的同步监视器了，所以也就不能使用wait()、notify()、notifyAll()了。</p>
-	<p>Java提供了Condition类来配合Lock使用，来进行线程通讯。用法类似synchronized关键和同步监视器。
-	Condition中的await()、signal()、signalAll()三个方法类似于同步监视器的wait()、notify()、notifyAll()三个方法。使用方式完全相同</p>
+		<p>三个方法：wait()、notify()、notifyAll()</p>
+		<p>wait()导致当前线程等待，直到其他线程调用该同步监视器的notify()或者notifyAll()方法来唤醒该线程</p>
+		<p>notify()或者notifyAll()方法唤醒在此同步监视器上等待的线程</p>
+		<p>如果没有使用synchronized关键字来进行线程同步，
+		而是直接使用Lock对象来保证同步那么线程中就不存在隐式的同步监视器了，所以也就不能使用wait()、notify()、notifyAll()了。</p>
+		<p>Java提供了Condition类来配合Lock使用，来进行线程通讯。用法类似synchronized关键和同步监视器。
+		Condition中的await()、signal()、signalAll()三个方法类似于同步监视器的wait()、notify()、notifyAll()三个方法。使用方式完全相同</p>
+	<h4>16.7 线程组和未处理异常</h4>
+	<h4>16.8 线程池</h4>
+		<p>使用线程池至少有两大好处：</p>
+		<p>1、系统创建一个线程的成本是比较高的，使用线程池可以避免这种性能损耗。尤其是在系统中需要大量生存期很短的线程时</p>
+		<p>2、使用线程池可以控制系统中的线程数量。保证系统中的最大线程数目不会超过线程池的容量</p>
+	<h4>16.9 线程相关类</h4>
+	<h4>16.10 本章小结</h4>
 </body>
 </html>
