@@ -26,7 +26,6 @@ class B {
 	}
 }
 
-
 public class DeadLock implements Runnable {
 	A a = new A();
 	B b = new B();
