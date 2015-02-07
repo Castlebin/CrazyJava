@@ -1,2 +1,4 @@
-这是一个普通的字符串
-ch15.se04.PrintStreamTest@15db9742
+从键盘输入了： 认了是
+从键盘输入了：wuzhi的
+从键盘输入了：exit
+输入了exit，程序退出
