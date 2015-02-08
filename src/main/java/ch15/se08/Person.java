@@ -3,8 +3,6 @@ package ch15.se08;
 import java.io.Serializable;
 
 public class Person implements Serializable {
-	private static final long serialVersionUID = 8097433699060774523L;
-	
 	private String name;
 	private int age;
 	
