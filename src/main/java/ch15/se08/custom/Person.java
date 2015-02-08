@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 // 自定义序列化(提供writeObject()、readObject()、readObjectNoData()这些方法即可)
 public class Person implements Serializable {
+	private static final long serialVersionUID = -6502256128385376440L;
+	
 	private String name;
 	private int age;
 	

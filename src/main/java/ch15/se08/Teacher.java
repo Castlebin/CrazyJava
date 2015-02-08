@@ -3,6 +3,8 @@ package ch15.se08;
 import java.io.Serializable;
 
 public class Teacher implements Serializable {
+	private static final long serialVersionUID = 1027430196739962343L;
+	
 	private String name;
 	private Person student;
 	

@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 // 使用transient关键字标明不想序列化类的某个字段
 public class Person2 implements Serializable {
+	private static final long serialVersionUID = -4984094005171959288L;
+	
 	private String name;
 	private transient int age;
 	
