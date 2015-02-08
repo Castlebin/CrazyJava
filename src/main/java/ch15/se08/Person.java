@@ -6,6 +6,9 @@ public class Person implements Serializable {
 	private String name;
 	private int age;
 	
+	// 类变量该会怎么序列化呢
+	public static String info;
+	
 	public Person(String name, int age) {
 		System.out.println("使用了Person类的有参构造器来创建了一个实例");
 		this.name = name;
