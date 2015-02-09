@@ -16,6 +16,7 @@ public class BufferTest {
 		buff.put('c');
 		
 		System.out.println("加入三个元素后，position = " + buff.position());
+		System.out.println("limit: " + buff.limit());
 		
 		// 调用flip()方法  (flip()方法，为输出数据做准备，即-将position值设为0，从而下面步骤可以从buffer里面读取数据了)
 		buff.flip();
