@@ -12,7 +12,7 @@ public class WatchServiceTest {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// 获取文件系统的WathcService对象
 		WatchService watchService = FileSystems.getDefault().newWatchService();
-		// 为tmp目录注册监听
+		// 为tmp目录注册监听(无法监听子目录下的变化)
 		Paths.get("/tmp").register(watchService, 
 				StandardWatchEventKinds.ENTRY_CREATE,
 				StandardWatchEventKinds.ENTRY_DELETE,
