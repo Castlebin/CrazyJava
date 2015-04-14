@@ -1,6 +1,14 @@
+# Eclipse settings
 /.project
 /.classpath
 /.settings
+
+# Idea settings
+.idea
+*.iml
+
+# global settings
 /target
 /logs
 *~
+
