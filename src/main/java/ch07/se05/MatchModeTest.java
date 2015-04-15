@@ -12,6 +12,6 @@ public class MatchModeTest {
 		
 		// 占有模式（加上+号，目前只有Java支持这种模式）
 		System.out.println(str.replaceFirst("\\w*+", "★"));//输出★, java!
-		
+
 	}
 }
